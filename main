@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkUp | لينب أب</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #fafafa; margin: 0; }
+        .nav { background: white; border-bottom: 1px solid #dbdbdb; padding: 10px 20px; position: sticky; top: 0; text-align: center; }
+        .nav h1 { font-size: 24px; margin: 0; color: #262626; }
+        .container { max-width: 600px; margin: 20px auto; padding: 10px; }
+        .card { background: white; border: 1px solid #dbdbdb; margin-bottom: 20px; border-radius: 3px; }
+        .card-header { padding: 10px; font-weight: bold; display: flex; align-items: center; }
+        .card-img { width: 100%; height: auto; background: #efefef; }
+        .card-content { padding: 10px; }
+        .card-content .likes { font-weight: bold; margin-bottom: 5px; }
+        .btn-verify { background: #0095f6; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px; }
+        input[type="email"], input[type="text"] { width: 100%; padding: 10px; margin: 5px 0; border: 1px solid #dbdbdb; border-radius: 3px; box-sizing: border-box; }
+    </style>
+</head>
+<body>
+
+    <div class="nav">
+        <h1>LinkUp</h1>
+    </div>
+
+    <div class="container">
+        <!-- قسم تسجيل الدخول / التحقق -->
+        <div class="card">
+            <div class="card-header">إنشاء حساب / تسجيل دخول</div>
+            <div class="card-content">
+                <input type="email" id="userEmail" placeholder="أدخل البريد الإلكتروني (Gmail)">
+                <button class="btn-verify" onclick="sendCode()">إرسال كود التحقق</button>
+                
+                <div id="verifySection" style="display:none; margin-top:15px;">
+                    <input type="text" id="verifyCode" placeholder="أدخل الكود المكون من 6 أرقام">
+                    <button class="btn-verify" style="background:#47cf73;" onclick="checkCode()">تأكيد الكود</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- منشور تجريبي -->
+        <div class="card">
+            <div class="card-header">@Error_404</div>
+            <div class="card-img"><img src="https://via.placeholder.com/600" alt="Post" style="width:100%"></div>
+            <div class="card-content">
+                <div class="likes">100 إعجاب</div>
+                <div><b>Error_404</b> أول منشور في موقعي الجديد LinkUp! 🔥</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function sendCode() {
+            const email = document.getElementById('userEmail').value;
+            if(email.includes("@")) {
+                alert("تم إرسال طلب الكود إلى السيرفر الخاص بك!");
+                document.getElementById('verifySection').style.display = 'block';
+            } else {
+                alert("يرجى إدخال إيميل صحيح");
+            }
+        }
+
+        function checkCode() {
+            const code = document.getElementById('verifyCode').value;
+            if(code.length === 6) {
+                alert("تم التحقق بنجاح! أهلاً بك في LinkUp");
+            } else {
+                alert("الكود خاطئ، حاول مرة أخرى");
+            }
+        }
+    </script>
+
+</body>
+</html>
